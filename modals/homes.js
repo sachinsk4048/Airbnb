@@ -26,10 +26,6 @@ discription : String,
 
 }); 
 
-// homeSchema.pre('findOneAndDelete', async function(next){
-//   const homeid = this.getQuery()._id;
-//   await favourite.deleteMany({homeid});
-//   next();
-// })
+
 
 module.exports = mongoose.model('home',homeSchema);
