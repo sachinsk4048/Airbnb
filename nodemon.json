@@ -1,0 +1,6 @@
+
+{
+  "watch": ["app.js", "routes", "modals", "views","controllers"],
+  "ext": "js,ejs,html,css",
+  "ignore": ["public/output.css"]
+}

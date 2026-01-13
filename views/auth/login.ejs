@@ -1,0 +1,52 @@
+<%- include('../partials/header') %>
+</head>
+<body class="bg-gradient-to-r from-red-50 to-red-100 min-h-screen">
+  <!-- ✅ Navbar -->
+  <%- include('../partials/nav') %>
+
+  <!-- ✅ Main Section -->
+  <main class="flex items-center justify-center min-h-screen pt-20 px-4">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-10 border border-red-100">
+      <!-- Title -->
+      <h1 class="text-3xl font-extrabold text-center text-red-600 mb-6">Login</h1>
+      <p class="text-center text-gray-500 mb-8">Enter your credentials to continue</p>
+
+      <!-- Form -->
+      <form action="/login" method="POST" class="space-y-5">
+        
+      <%- include('../partials/errors', { errors: errors }) %>
+
+        <!-- Username/Email -->
+        <input
+          type="email"
+          name="email"
+          placeholder="xyz@gmail.com"
+           value="<%= oldInput.email ? oldInput.email : '' %>"
+          class="w-full px-4 py-3 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400"
+          required />
+
+        <!-- Password -->
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter Your Password"
+          class="w-full px-4 py-3 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400"
+          required />
+
+      
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full bg-red-500 text-white py-3 rounded-xl font-semibold hover:bg-red-600 transition duration-300 shadow-md">
+          Sign In
+        </button>
+
+        <!-- Extra -->
+        <p class="text-center text-sm text-gray-500 mt-4">
+          Don’t have an account? 
+          <a href="/signup" class="text-red-500 font-semibold hover:underline">Register</a>
+        </p>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

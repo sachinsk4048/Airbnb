@@ -1,0 +1,125 @@
+<!-- Add FontAwesome in your header.ejs -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<header class="bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg sticky top-0 z-50 mb-6">
+  <nav class="container mx-auto flex justify-between items-center px-6 py-4">
+
+    <!-- 🔹 Logo -->
+    <div class="flex items-center space-x-2 text-2xl font-extrabold">
+      <i class="fa-solid fa-house-user"></i>
+      <a href="/" class="hover:text-gray-200 transition">Airbnb</a>
+    </div>
+
+    <!-- 🔹 Desktop Menu -->
+    <ul class="hidden md:flex items-center space-x-4 font-medium">
+      <% if (isLoggedIn) { %>
+        <% if (user && user.usertype==='guest' ) { %>
+          <li>
+            <a href="/home-list"
+              class="<%= currentPage === 'Home' ? 'bg-red-700' : 'hover:bg-red-600' %> px-4 py-2 rounded-lg flex items-center space-x-2 transition">
+              <i class="fa-solid fa-home"></i><span>Homes</span>
+            </a>
+          </li>
+          <li>
+            <a href="/fav-list"
+              class="<%= currentPage === 'favourites' ? 'bg-red-700' : 'hover:bg-red-600' %> px-4 py-2 rounded-lg flex items-center space-x-2 transition">
+              <i class="fa-solid fa-heart"></i><span>Favourites</span>
+            </a>
+          </li>
+          <li>
+            <a href="/bookings"
+              class="<%= currentPage === 'bookings' ? 'bg-red-700' : 'hover:bg-red-600' %> px-4 py-2 rounded-lg flex items-center space-x-2 transition">
+              <i class="fa-solid fa-calendar-check"></i><span>Bookings</span>
+            </a>
+          </li>
+          <% } else {%>
+
+            <li>
+              <a href="/host/host-home-list"
+                class="<%= currentPage === 'host-homes' ? 'bg-red-700' : 'hover:bg-red-600' %> px-4 py-2 rounded-lg flex items-center space-x-2 transition">
+                <i class="fa-solid fa-layer-group"></i><span>Host Homes</span>
+              </a>
+            </li>
+            <li>
+              <a href="/host/add-home"
+                class="<%= currentPage === 'addHome' ? 'bg-red-700' : 'hover:bg-red-600' %> px-4 py-2 rounded-lg flex items-center space-x-2 transition">
+                <i class="fa-solid fa-plus-circle"></i><span>Add Home</span>
+              </a>
+            </li>
+            <% } %>
+              <% } %>
+
+                <% if (!isLoggedIn) { %>
+                  <li>
+                    <a href="/login"
+                      class="hover:bg-red-600 px-4 py-2 rounded-lg flex items-center space-x-2 transition">
+                      <i class="fa-solid fa-right-to-bracket"></i><span>Login</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/signup"
+                      class="hover:bg-red-600 px-4 py-2 rounded-lg flex items-center space-x-2 transition">
+                      <i class="fa-solid fa-user-plus"></i><span>Signup</span>
+                    </a>
+                  </li>
+                  <% } else { %>
+                    <li>
+                      <form action="/logout" method="POST">
+                        <button type="submit"
+                          class="hover:bg-red-600 px-4 py-2 rounded-lg flex items-center space-x-2 transition">
+                          <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
+                        </button>
+                      </form>
+                    </li>
+                    <% } %>
+    </ul>
+
+    <!-- 🔹 Mobile Hamburger -->
+    <div class="md:hidden">
+      <button id="menu-btn" class="text-2xl focus:outline-none">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 🔹 Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-red-600 text-white">
+    <ul class="flex flex-col space-y-2 p-4">
+      <% if (isLoggedIn) { %>
+        <li><a href="/home-list" class="block px-4 py-2 rounded hover:bg-red-700 flex items-center space-x-2"><i
+              class="fa-solid fa-home"></i><span>Homes</span></a></li>
+        <li><a href="/fav-list" class="block px-4 py-2 rounded hover:bg-red-700 flex items-center space-x-2"><i
+              class="fa-solid fa-heart"></i><span>Favourites</span></a></li>
+        <li><a href="/bookings" class="block px-4 py-2 rounded hover:bg-red-700 flex items-center space-x-2"><i
+              class="fa-solid fa-calendar-check"></i><span>Bookings</span></a></li>
+        <li><a href="/host/host-home-list"
+            class="block px-4 py-2 rounded hover:bg-red-700 flex items-center space-x-2"><i
+              class="fa-solid fa-layer-group"></i><span>Host Homes</span></a></li>
+        <li><a href="/host/add-home" class="block px-4 py-2 rounded hover:bg-red-700 flex items-center space-x-2"><i
+              class="fa-solid fa-plus-circle"></i><span>Add Home</span></a></li>
+        <li>
+          <form action="/logout" method="POST">
+            <button type="submit"
+              class="w-full text-left px-4 py-2 rounded hover:bg-red-700 flex items-center space-x-2">
+              <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
+            </button>
+          </form>
+        </li>
+        <% } else { %>
+          <li><a href="/login" class="block px-4 py-2 rounded hover:bg-red-700 flex items-center space-x-2"><i
+                class="fa-solid fa-right-to-bracket"></i><span>Login</span></a></li>
+          <li><a href="/signup" class="block px-4 py-2 rounded hover:bg-red-700 flex items-center space-x-2"><i
+                class="fa-solid fa-user-plus"></i><span>Signup</span></a></li>
+          <% } %>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
