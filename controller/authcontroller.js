@@ -1,6 +1,6 @@
 const { check, validationResult } = require("express-validator");
 const User = require('../modals/user');
-const bcrypt = require("bcryptjs");   // ✅ REQUIRED
+const bcrypt = require("bcryptjs");   
 
 exports.getlogin = (req, res, next) => {
   res.render("auth/login", {
@@ -106,17 +106,6 @@ exports.postsignup = [
   check('usertype')
     .isIn(['guest','host'])
     .withMessage("invalid usertype"),
-
-  // check('terms')
-  //   .notEmpty()
-  //   .withMessage("please accept the terms and conditions")
-  //   .custom((value,{req})=>{
-  //     if(value!== "on"){
-  //       throw new Error("please accept the terms and conditions");
-  //     }
-  //     return true;
-  //   }),
-
   (req,res,next) => {
 
     const {firstName,lastName,email,password,usertype} = req.body;

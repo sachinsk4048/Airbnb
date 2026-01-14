@@ -10,7 +10,6 @@ app.set('views','views')
 const homecontroller = require('./controller/storecontroller')
 const { Result } = require('postcss')
 const { error } = require('console')
-// const {mongoConnect} = require('./util/database')
 const { default: mongoose } = require('mongoose');
 const session = require('express-session');
 const mongoDBStore = require('connect-mongodb-session')(session);

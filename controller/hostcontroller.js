@@ -5,7 +5,7 @@ exports.getaddhome = (req, res, next) => {
   res.render("host/edit-home", {
     pagetitle: "add home to airbinb",
     editing: false,
-    currentPage: "addHome" ,  // ✅ nav.ejs me "addHome" hai
+    currentPage: "addHome" ,  
     isLoggedIn: req.isLoggedIn,
     user : req.session.user,
 
@@ -24,7 +24,7 @@ exports.getedithome = (req, res, next) => {
       home: home,
       pagetitle: "Edit your home",
       editing: editing,
-      currentPage: "addHome",   // ✅ edit bhi addHome ke tab me rahega
+      currentPage: "addHome",   
       isLoggedIn: req.isLoggedIn,
       user : req.session.user,
     });
@@ -36,7 +36,7 @@ exports.gethosthome = (req, res, next) => {
     res.render("host/host-home-list", {
       registerhome: registerhome,
       title: "host home list",
-      currentPage: "host-homes",   // ✅ nav.ejs me "host-homes" hai
+      currentPage: "host-homes",   
       isLoggedIn: req.isLoggedIn,
       user : req.session.user,
     });

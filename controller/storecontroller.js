@@ -6,7 +6,7 @@ exports.getindex = (req, res, next) => {
     res.render("store/index", {
       registerhome,
       title: "index",
-      currentPage: "index",   // ✅ capital P aur nav.ejs ke hisaab se
+      currentPage: "index",   
       isLoggedIn: req.isLoggedIn,
       user : req.session.user,
     });
@@ -18,7 +18,7 @@ exports.gethome = (req, res, next) => {
     res.render("store/home-list", {
       registerhome,
       title: "home",
-      currentPage: "Home",   // ✅ nav.ejs me "Home" hai
+      currentPage: "Home",   
       isLoggedIn: req.isLoggedIn,
       user : req.session.user,
     });
@@ -32,7 +32,7 @@ exports.notfound = (req, res, next) => {
 exports.getbookings = (req, res, next) => {
   res.render("store/bookings", {
     title: "my bookings",
-    currentPage: "bookings",   // ✅ nav.ejs me "bookings" hai
+    currentPage: "bookings",   
     isLoggedIn: req.isLoggedIn,
     user : req.session.user,
   });
@@ -45,7 +45,7 @@ exports.getfavlist = async (req, res, next) => {
       res.render("store/fav-list", {
         favouritehomes : user.favourites,
         title: "favourites",
-        currentPage: "favourites",    //✅ nav.ejs me "favourites" hai
+        currentPage: "favourites",    
         isLoggedIn: req.isLoggedIn,
         user : req.session.user,
       });
@@ -87,7 +87,7 @@ exports.gethomedetails = (req, res, next) => {
       res.render("store/home-detail", {
         home,
         title: "home detail",
-        currentPage: "Home",   // ✅ home detail bhi Home tab ke andar hai
+        currentPage: "Home",  
         isLoggedIn: req.isLoggedIn,
         user : req.session.user,
       });
